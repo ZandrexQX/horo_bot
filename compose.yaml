@@ -14,8 +14,8 @@ services:
 #    environment:
 #      - REDIS_HOST=host.docker.internal
 #      - BOT_TOKEN='7088479027:AAECfK82iQ89mvzlLIkBzbgY6fTvMGdi7VY'
-    env_file:
-      - .env
+#    env_file:
+#      - .env
     ports:
       - 4001:4001
     restart: unless-stopped
