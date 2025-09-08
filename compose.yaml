@@ -13,7 +13,6 @@ services:
       context: .
 #    environment:
 #      - REDIS_HOST=host.docker.internal
-#      - BOT_TOKEN='7088479027:AAECfK82iQ89mvzlLIkBzbgY6fTvMGdi7VY'
     env_file:
       - .env
     ports:
