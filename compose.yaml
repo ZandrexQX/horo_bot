@@ -18,7 +18,7 @@ services:
       ADMIN_ID: "${ID_ADMIN}"
     volumes: 
       - ./logs:/code/logs
-      - ./:./
+      - ./horobot:./
     ports:
       - 4001:4001
     restart: unless-stopped
