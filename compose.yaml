@@ -8,14 +8,16 @@
 # database or a cache. For examples, see the Awesome Compose repository:
 # https://github.com/docker/awesome-compose
 services:
-  server:
-    build:
-      context: .
+  horo_bot:
+    build: .
 #    environment:
 #      - REDIS_HOST=host.docker.internal
+    container_name: horo_bot
     environment:  
       BOT_TOKEN: "${BOT_TOKEN}"  
-      ADMIN_ID: "${ID_ADMIN}"  
+      ADMIN_ID: "${ID_ADMIN}"
+    volumes: 
+      - ./logs:/code/logs  
     ports:
       - 4001:4001
     restart: unless-stopped
