@@ -16,9 +16,9 @@ services:
     environment:  
       BOT_TOKEN: "${BOT_TOKEN}"  
       ADMIN_ID: "${ID_ADMIN}"
-    volumes: 
-      - ./logs:/code/logs
-      - ./horobot:./
+    # volumes: 
+    #   - ./logs:/code/logs
+    #   - ./horobot:./
     ports:
       - 4001:4001
     restart: unless-stopped
