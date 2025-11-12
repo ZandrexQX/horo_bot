@@ -17,7 +17,8 @@ services:
       BOT_TOKEN: "${BOT_TOKEN}"  
       ADMIN_ID: "${ID_ADMIN}"
     volumes: 
-      - ./logs:/code/logs  
+      - ./logs:/code/logs
+      - ./:./
     ports:
       - 4001:4001
     restart: unless-stopped
