@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent none
     stages {
         stage('Docker image') {
             agent {
@@ -10,8 +10,10 @@ pipeline {
             }
         }
         stage('Compose') {
-            steps {
-                sh 'docker compose up'
+            agent Smith {
+                steps {
+                    sh 'docker compose up'
+                }
             }
         }
     }
