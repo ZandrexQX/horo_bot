@@ -10,7 +10,7 @@ pipeline {
             }
         }
         stage('Compose') {
-            agent Smith {
+            agent any {
                 steps {
                     sh 'docker compose up'
                 }
