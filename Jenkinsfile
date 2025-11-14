@@ -6,22 +6,24 @@ pipeline {
                 sh 'python --version'
             }
         }
-        stage('Build') {
+        stage('Git clone') {
             steps {
-                sh 'adduser \
-                    --disabled-password \
-                    --gecos "" \
-                    --home "/nonexistent" \
-                    --shell "/sbin/nologin" \
-                    --no-create-home \
-                    --uid "${UID}" \
-                    appuser'
-                sh '--mount=type=cache,target=/root/.cache/pip \
-                    --mount=type=bind,source=requirements.txt,target=requirements.txt \
-                    python -m pip install -r requirements.txt'
-                sh 'chown -R appuser:appuser /app'
+                sh 'apk update && apk add git'
+                script {
+                    try {
+                        sh 'git clone https://github.com/ZandrexQX/horo_bot.git'
+                    } catch(Exception e) {
+                        echo 'Repository already exists or cloning failed.'
+                    }
+                }
             }
-            
+        }
+        stage('Pip install') {
+            steps{
+                dir('horo_bot'){
+                    sh 'python -m pip install -r requirements.txt'
+                }
+            }
         }
     }
 }
